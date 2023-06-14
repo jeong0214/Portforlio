@@ -2,14 +2,14 @@ let isFullPageScrollEnabled = true;
 let fullPageInstance;
 let sectionIndex = 0;
 
-let isModalOpen = false; // 변수를 추가하여 현재 모달이 열려있는지 여부를 추적합니다.
+let isModalOpen = false; // 변수를 추가하여 현재 모달이 열려있는지 여부
 
 const openModal = (pcardClass, modalClass) => {
-  if (isModalOpen) return; // 이미 모달이 열려있으면 중복 실행을 방지합니다.
+  if (isModalOpen) return; // 이미 모달이 열려있으면 중복 실행을 방지
 
   modalOpen(modalClass);
   disableFullPageScroll();
-  isModalOpen = true; // 모달이 열렸음을 표시합니다.
+  isModalOpen = true; // 모달이 열렸음을 표시
   if (isModalOpen) {
     disableFullPageScroll();
   }
@@ -18,14 +18,14 @@ const openModal = (pcardClass, modalClass) => {
 const closeModal = (modalClass) => {
   modalClose(modalClass);
   enableFullPageScroll();
-  isModalOpen = false; // 모달이 닫혔음을 표시합니다.
+  isModalOpen = false; // 모달이 닫혔음을 표시
 
   if (!isModalOpen) {
     enableFullPageScroll();
   }
 };
 
-// 각 PcardWrap 요소에 클릭 이벤트를 추가합니다.
+// 각 PcardWrap 요소에 클릭 이벤트를 추가
 document.querySelector(".PcardWrap1").addEventListener("click", () => {
   openModal("PcardWrap1", "detailModalWrap1");
 });
@@ -39,18 +39,12 @@ document.querySelector(".PcardWrap4").addEventListener("click", () => {
   openModal("PcardWrap4", "detailModalWrap4");
 });
 
-// 닫기 버튼 클릭 이벤트를 추가합니다.
+// 닫기 버튼 클릭 이벤트를 추가
 const modalCloseButtons = document.querySelectorAll(".modalClose");
 modalCloseButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const modalClass = button.getAttribute("data-modal");
     closeModal(modalClass);
-
-    // .PcardWrap1, .PcardWrap2, .PcardWrap3, .PcardWrap4에서 on 클래스 제거
-    // const pcardWraps = document.querySelectorAll(
-    //   ".PcardWrap1, .PcardWrap2, .PcardWrap3, .PcardWrap4"
-    // );
-    // pcardWraps.forEach((pcardWrap) => pcardWrap.classList.replace("on", "off"));
   });
 });
 
@@ -76,8 +70,7 @@ function modalClose(modalClass) {
   disableModalScroll();
   setTimeout(() => {
     refreshFullPage();
-    //모달 요소를 화면에서 숨기기 위해 display 속성을 변경합니다.
-  }, 100); // 적절한 재초기화와 화면 숨김을 위해 적절한 지연 시간을 설정합니다.
+  }, 100);
 }
 
 function disableFullPageScroll() {
@@ -269,13 +262,4 @@ const section2 = document.querySelector(".PcardWrap");
 window.addEventListener("scroll", () => {
   section2.classList.add("animate-active");
   // section1.classList.remove('animate', 'animate-active');
-});
-
-// 링크 새창으로 열기
-const modalLinks = document.querySelectorAll("a.modalLinkS");
-
-// Set the "target" attribute to "_blank" to open links in a new tab
-modalLinks.forEach((link) => {
-  link.setAttribute("target", "_blank");
-  link.setAttribute("rel", "noopener noreferrer");
 });
