@@ -227,18 +227,27 @@ function refreshFullPage() {
         .addEventListener("click", function () {
           fullpage_api.moveTo(2);
           gnb.classList.remove("on");
+          btnGnb1.classList.remove("on");
+          btnGnb2.classList.remove("on");
+          btnGnb3.classList.remove("on");
         });
       document
         .querySelector(".profilLink")
         .addEventListener("click", function () {
           fullpage_api.moveTo(3);
           gnb.classList.remove("on");
+          btnGnb1.classList.remove("on");
+          btnGnb2.classList.remove("on");
+          btnGnb3.classList.remove("on");
         });
       document
         .querySelector(".contentLink")
         .addEventListener("click", function (nn) {
           fullpage_api.moveTo(4);
           gnb.classList.remove("on");
+          btnGnb1.classList.remove("on");
+          btnGnb2.classList.remove("on");
+          btnGnb3.classList.remove("on");
         });
 
       // sec1 애니메이션
